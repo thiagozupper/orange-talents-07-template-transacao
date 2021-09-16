@@ -1,0 +1,21 @@
+version: '3'
+services:
+
+  mysql-transacao:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "transacao"
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-transacao-volume:/var/lib/mysql
+
+  adminer:
+    image: adminer
+    ports:
+      - "7776:8080"
+
+volumes:
+  mysql-transacao-volume:
+
