@@ -1,5 +1,7 @@
 package br.com.zupacademy.thiago.transacao.model;
 
+import br.com.zupacademy.thiago.transacao.dto.TransacaoResponse;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -46,16 +48,10 @@ public class Transacao {
         return id;
     }
 
-    public BigDecimal getValor() {
-        return valor;
-    }
-
-    public Estabelecimento getEstabelecimento() {
-        return estabelecimento;
-    }
-
-    public LocalDateTime getEfetivadaEm() {
-        return efetivadaEm;
+    public TransacaoResponse toTransacaoResponse() {
+        return new TransacaoResponse(this.valor, this.estabelecimento.getNome(),
+                this.estabelecimento.getCidade(), this.estabelecimento.getEndereco(),
+                this.efetivadaEm);
     }
 
     @Override
